@@ -8,14 +8,15 @@ import './App.css';
 // import LifecycleEx from './R008_LifecycleEx'
 // import Es6 from './R009_Es6'
 // import Variable from './R010_Variable'
-import SpreadOperator from './R011_SpreadOperator'
+// import SpreadOperator from './R011_SpreadOperator'
+import ClassPrototype from './R012_ClassNPrototype'
 
 function App() {
   return (
     <div>
       <h1>Start React 200!</h1>
       <p>HTML, CSS 적용하기</p>
-      <SpreadOperator/>
+      <ClassPrototype/>
     </div>
   );
 }
