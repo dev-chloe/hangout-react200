@@ -7,10 +7,10 @@ class R010_Variable extends Component {
   }
 
   componentDidMount() {
-    var varName = 'react';
-    console.log('varName1 : ' + varName);
-    var varName = '200'; // 'varName' is already defined  no-redeclare
-    console.log('varName2 : ' + varName);
+    // var varName = 'react';
+    // console.log('varName1 : ' + varName);
+    // var varName = '200'; // 'varName' is already defined  no-redeclare
+    // console.log('varName2 : ' + varName);
 
     let letName = 'react';
     console.log('letName1 : ' + letName);
