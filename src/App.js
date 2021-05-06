@@ -9,14 +9,15 @@ import './App.css';
 // import Es6 from './R009_Es6'
 // import Variable from './R010_Variable'
 // import SpreadOperator from './R011_SpreadOperator'
-import ClassPrototype from './R012_ClassNPrototype'
+// import ClassPrototype from './R012_ClassNPrototype'
+import ArrowFunction from './R013_ArrowFunction'
 
 function App() {
   return (
     <div>
       <h1>Start React 200!</h1>
       <p>HTML, CSS 적용하기</p>
-      <ClassPrototype/>
+      <ArrowFunction/>
     </div>
   );
 }
