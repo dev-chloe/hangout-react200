@@ -6,4 +6,4 @@
 - [익명함수와 화살표 함수의 차이를 확인 할 수 있는 예제](./src/R013_ArrowFunction.js#L52-L55)
 
 ### [props 자료형 선언하기](./src/R018_PropsDatatype)
-- [pops 자료형 선언 proTypes](./src/R018_PropsDatatype#L23-L36)
+- [pops 자료형 선언 proTypes](./src/R018_PropsDatatype.js#L23-L36)
