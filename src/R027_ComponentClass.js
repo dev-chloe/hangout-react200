@@ -1,4 +1,4 @@
-import{ Component } from "react";
+import React, { Component } from "react";
 
 class R027_ComponentClass extends Component {
   constructor (props) {
