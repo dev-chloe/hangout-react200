@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import ReactstrapPopover from './R051_ReactstrapPopover';
+import ReactstrapProgress from './R052_ReactstrapProgress';
 import 'bootstrap/dist/css/bootstrap.css';
 
 function App() {
@@ -8,7 +8,7 @@ function App() {
     <div className="cont_box">
       <h1>Start React 200!</h1>
       <p>HTML, CSS 적용하기</p>
-      <ReactstrapPopover />
+      <ReactstrapProgress />
     </div>
   );
 }
