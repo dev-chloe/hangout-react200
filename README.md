@@ -10,3 +10,6 @@
 
 ### [참조값](./R028_PureComponentClass.js)
 - [참조 값이란](./R028_PureComponentClass.js#L34-L36)
+
+### [axios get 사용하기](./R061_AxiosGet.js)
+- [axios get 사용방법](./R061_AxiosGet.js#L13-L16)
