@@ -1,13 +1,13 @@
 import React from 'react';
 import './App.css';
-import AxiosGet from './R061_AxiosGet';
+import AxiosPost from './R062_AxiosPost';
 
 function App() {
   return (
     <div className="cont_box">
       <h1>Start React 200!</h1>
       <p>HTML, CSS 적용하기</p>
-      <AxiosGet />
+      <AxiosPost />
     </div>
   );
 }
