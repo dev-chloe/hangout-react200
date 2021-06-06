@@ -17,6 +17,9 @@
 ### [axios post 사용하기](./src/R062_AxiosPost.js)
 - [axios get 사용방법](./src/R062_AxiosPost.js#L13-L16)
 
+### [하이오더 컴포넌트 구현하기](./src/Hoc/R075_ReactHoc.js)
+- [하이오더 컴포넌트](./src/Hoc/withHocComponent.js)
+
 ---
 
 ## etc.
