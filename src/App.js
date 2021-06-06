@@ -1,13 +1,13 @@
 import React from 'react';
 import './App.css';
-import ReactHoc from './Hoc/R075_ReactHoc';
+import ContextApi from './Context/R076_ContextApi';
 
 function App() {
   return (
     <div className="cont_box">
       <h1>Start React 200!</h1>
       <p>HTML, CSS 적용하기</p>
-      <ReactHoc name='React 200'/>
+      <ContextApi />
     </div>
   );
 }
