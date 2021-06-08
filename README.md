@@ -24,6 +24,13 @@
 - [자식 컴포넌트](./src/src/contextChildren.js)
 - [손자 컴포넌트](./src/src/contextChildren2.js)
 
+### redux 기초
+- redux react 비교 
+  ![](./img/react-vs-redux.png)
+
+
+
+  
 ---
 
 ## etc.
