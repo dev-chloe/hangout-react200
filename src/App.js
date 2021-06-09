@@ -20,7 +20,7 @@ class App extends Component {
     return (
       <div>
         <h1>Start React 200!</h1>
-        <span>{ this.props.store.getState().data.str }</span>
+        <span>{ this.props.store.getState().data.str }</span><br />
         {/* 
           props를 통해 index.js에서 전달받은 store에 접근한다.
           스토어 state 데이터에서 str 변수값을 가져온다.
