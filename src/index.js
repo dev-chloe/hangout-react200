@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import { createStore } from 'redux';
 import reducers from './reducers';
+import { Provider } from 'react-redux';
 // import reportWebVitals from './reportWebVitals';
 
 // ReactDOM.render(
@@ -17,20 +18,21 @@ import reducers from './reducers';
 // reportWebVitals();
 
 /* 
- * redux 적용
+ * react-redux 적용
  */
 const store = createStore(reducers);
-// redux 패키지에서 스토어 생성 함수 createStore 임포트하고,
-// 파라미터로 reducers 폴더 경로로 넘긴다. 
-// reducers 폴더의 index.js에는 데이터 초깃값을 설정하고 데이터를 변경해주는 함수가 있는데
-// 이 함수를 '리듀서'라고 한다.
-
 
 const listener = () => {
   ReactDOM.render(
-    <App store={store} />,
-    // store를 App 컴포넌트에 전달하고 render 함수를 listener 함수 내부에 위치시킨다.
-    // store를 구독하면 store 내부의 데이터가 변화가 있을 때 listener 함수 내부의 render 함수를 실행하고 render 함수를 실행시켜준다.
+    <Provider store={store}>
+      {/* 
+        store 상속을 위한 Provider 태그로 App 컴포넌트를 감싸는 부분이 변경되었다.
+        Provider에 데이터를 넘겨주면 중간 컴포넌트에서 props 값을 다시 전달해줄 필요없이 모든 하위 컴포넌트에서 데이터를 사용할 수 있다.
+        컨텍스트 api에서 사용했던 Provider와 동일한 기능을 한다.
+      */}
+      <App indexProp="react" />,
+      {/* App 컴포넌트에서 사용할 변수 indexProp에 react 문자열을 할당해 props로 전달한다. */}
+    </Provider>,
     document.getElementById('root')
   )
 }
@@ -38,12 +40,11 @@ const listener = () => {
 store.subscribe(listener);
 listener();
 
-/* 
-  redux는 컨텍스트와 마찬가지로 데이터를 필요한 컴포넌트에서만 요청해 사용할 수 있다.
-  컨텍스트는 부모 컴포넌트에서 생상한 데이터에 모든 자식 컴포넌트에서 접근할 수 있지만
-  redux에서는 컴포넌트 외부의 스토어라는 곳에서 관리한다.
-  컴포넌트 위치에 상관없이 스토어에 접근하여 데이터를 사용하고 변경 가능하다.
+/*
+  redux만 사용해도 충분히 스토어 데이터를 사용하고 변경할 수 있지만 
+  react-redux는 redux를 react와 연동해서 사용하기 편리하도록 만든 라이브러리다.
 
-  redux 적용 전후 비교
-  https://raw.githubusercontent.com/dev-chloe/hangout-react200/main/img/react-vs-redux.png
+  react-redux의 장점
+  1. store를 하위 컴포넌트에 매번 상속하지 않고 사용가능하다.
+  2. 스토어 데이터를 사용, 변경하는 코드를 모듈화해 컴포넌트 내에 중복된 코드 사용을 최소화 가능하다.
 */
