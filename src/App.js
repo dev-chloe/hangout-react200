@@ -23,7 +23,7 @@ class App extends Component {
         <h1>Start React 200!</h1>
         {/* <span>{ this.props.store.getState().data.str }</span><br />
         <StrAddButton store={ this.props.store } /> */}
-        <span>{this.props.str}</span>
+        <span>{this.props.str}</span><br />
         {/* 
           str 변수로 할당한 값을 화면에 출력한다. redux를 사용하던 것과 비교하면 컴포넌트 내에 코드가 짧아진 것을 확인할 수 있다.
           접근하는 스토어 변수가 많아질수록 코드 효율이 좋아진다.

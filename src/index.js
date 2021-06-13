@@ -2,9 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import { createStore } from 'redux';
-import reducers from './reducers';
+import { applyMiddleware, createStore } from 'redux';
 import { Provider } from 'react-redux';
+import reducers from './reducers';
 // import reportWebVitals from './reportWebVitals';
 
 // ReactDOM.render(
@@ -18,20 +18,33 @@ import { Provider } from 'react-redux';
 // reportWebVitals();
 
 /* 
- * react-redux 적용
+ * redux 미들웨어 적용
  */
-const store = createStore(reducers);
+
+const CallMiddleware = store => nextMiddle => action => {
+  /* 
+    applyMiddleware 함수에 전달될 함수는 다중 컬링 구조로, 세 가지 인사를 순서대로 받는다. 
+    첫 번째 인자는 스토어, 두 번째 인다는 다음 미들웨어를 호출하는 함수로 예제어서는 미들웨어가 1개이므로 리듀서를 호출한다.
+    세번째 인자는 액션이다.
+  */
+  console.log('1. redcer 실행 전');
+  console.log('2. action.type : ' + action.type + ', store str : ' + store.getState().data.str);
+  let result = nextMiddle(action);
+  // 실행할 미들웨어가 없으므로 리듀서를 실행한다
+  console.log('3. redcer 실행 후');
+  console.log('4. action.type : ' + action.type + ', store str : '+ store.getState().data.str);
+  return result;
+}
+
+
+const store = createStore(reducers, applyMiddleware(CallMiddleware));
+// createStore 함수의 두번째 파라미터를 applyMiddleware 함수로 전달한다.
+// applyMiddleware 함수의 파라미터로 새로 정의해 사용할 미들웨어 함수명(CallMiddleware)을 넣는다.
 
 const listener = () => {
   ReactDOM.render(
     <Provider store={store}>
-      {/* 
-        store 상속을 위한 Provider 태그로 App 컴포넌트를 감싸는 부분이 변경되었다.
-        Provider에 데이터를 넘겨주면 중간 컴포넌트에서 props 값을 다시 전달해줄 필요없이 모든 하위 컴포넌트에서 데이터를 사용할 수 있다.
-        컨텍스트 api에서 사용했던 Provider와 동일한 기능을 한다.
-      */}
-      <App indexProp="react" />,
-      {/* App 컴포넌트에서 사용할 변수 indexProp에 react 문자열을 할당해 props로 전달한다. */}
+      <App indexProp="react" />
     </Provider>,
     document.getElementById('root')
   )
@@ -41,10 +54,13 @@ store.subscribe(listener);
 listener();
 
 /*
-  redux만 사용해도 충분히 스토어 데이터를 사용하고 변경할 수 있지만 
-  react-redux는 redux를 react와 연동해서 사용하기 편리하도록 만든 라이브러리다.
-
-  react-redux의 장점
-  1. store를 하위 컴포넌트에 매번 상속하지 않고 사용가능하다.
-  2. 스토어 데이터를 사용, 변경하는 코드를 모듈화해 컴포넌트 내에 중복된 코드 사용을 최소화 가능하다.
+  redux 미들웨어는 액션을 dispatch 함수로 전달하고 리듀서가 실행되기 전과 실행된 후에 처리되는 기능을 말한다.
+  redux 패키지에서 지원하는 applyMiddleware 함수를 사용하면 미들웨어를 간단하게 구현할 수 있다.
+*/
+/*
+  1. redcer 실행 전
+  2. action.type : ADD, store str : react
+  Props from index.js : react
+  3. redcer 실행 후
+  4. action.type : ADD, store str : react200
 */
