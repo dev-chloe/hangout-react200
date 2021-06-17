@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import App from './component/App';
 import { BrowserRouter } from 'react-router-dom';
-import * as servicWoerker from './serviceWorker';
+import * as serviceWorker from './serviceWorker';
 // import reportWebVitals from './reportWebVitals';
 
 // ReactDOM.render(
@@ -26,7 +26,7 @@ ReactDOM.render((
   App 컴포넌트와 하위 컴포넌트에서 Route, Link를 사용할 때마다 <BrowserRouter> 태그를 감싸서 사용할 수도 있다
   최상위 컴포넌트 App 컴포넌트를 <BrowserRouter> 태그 안에 위치시키면 하위 모든 컴포넌트에서 라우팅 기능(Route, Link)을 사용 할 수 있다.
 */
-servicWoerker.unregister();
+serviceWorker.unregister();
 
 /* 
   라우팅은 호출되는 url에 따라 페이지 이동을 설정하는 것이다.
