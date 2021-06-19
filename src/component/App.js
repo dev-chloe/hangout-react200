@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
-import reactRouter from './R089_reactRouter';
-import reactRouter2 from './R089_reactRouter2';
 import '../App.css';
 import HeaderAdmin from './Header/HeaderAdmin';
 import Footer from './Footer/Footer';
+import LoginForm from './LoginForm';
 
 // function App() {
 //   return (
@@ -21,8 +20,7 @@ class App extends Component {
     return (
       <div className="App">
         <HeaderAdmin />
-        <Route exact path='/' component={reactRouter} />
-        <Route exact path='/reactRouter2' component={reactRouter2} />
+        <Route exact path='/' component={LoginForm} />
         <Footer />
       </div>
     )
