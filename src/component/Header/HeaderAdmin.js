@@ -12,7 +12,10 @@ class HeaderAdmin extends Component {
             <nav>
               <ul>
                 <li>
-                  <Link to={'/Debounce'}>Debounce</Link>
+                  <Link to={'/debounce'}>Debounce</Link>
+                </li>
+                <li>
+                  <Link to={'/throttle'}>Throttle</Link>
                 </li>
               </ul>
             </nav>
