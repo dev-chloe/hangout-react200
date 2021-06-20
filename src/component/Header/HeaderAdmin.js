@@ -8,6 +8,14 @@ class HeaderAdmin extends Component {
         <header>
           <div className="inner">
             <Link to={'/'}>Logo</Link>
+
+            <nav>
+              <ul>
+                <li>
+                  <Link to={'/Debounce'}>Debounce</Link>
+                </li>
+              </ul>
+            </nav>
           </div>
         </header>
       </>

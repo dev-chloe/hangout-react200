@@ -4,6 +4,7 @@ import '../App.css';
 import HeaderAdmin from './Header/HeaderAdmin';
 import Footer from './Footer/Footer';
 import LoginForm from './LoginForm';
+import reactDebounce from './R094_reactDebounce';
 
 // function App() {
 //   return (
@@ -21,6 +22,7 @@ class App extends Component {
       <div className="App">
         <HeaderAdmin />
         <Route exact path='/' component={LoginForm} />
+        <Route exact path='/Debounce' component={reactDebounce} />
         <Footer />
       </div>
     )
