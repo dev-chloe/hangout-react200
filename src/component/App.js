@@ -3,9 +3,7 @@ import { Route } from 'react-router-dom';
 import '../App.css';
 import HeaderAdmin from './Header/HeaderAdmin';
 import Footer from './Footer/Footer';
-import LoginForm from './LoginForm';
-import reactDebounce from './R094_reactDebounce';
-import reactThrottle from './R095_reactThrottle';
+import floatingPopulationList from './Floating_population/floatingPopulationList';
 
 // function App() {
 //   return (
@@ -22,9 +20,7 @@ class App extends Component {
     return (
       <div className="App">
         <HeaderAdmin />
-        <Route exact path='/' component={LoginForm} />
-        <Route exact path='/debounce' component={reactDebounce} />
-        <Route exact path='/throttle' component={reactThrottle} />
+        <Route exact path='/' component={floatingPopulationList} />
         <Footer />
       </div>
     )
