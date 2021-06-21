@@ -1,6 +1,35 @@
+import axios from "axios";
 import { Component } from "react";
 
 class floatingPopulationList extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      responseFPList: '',
+      append_FPList: '',
+    }
+  }
+
+  componentDidMount() {
+    this.callFloatPopulListApi()
+  }
+
+  callFloatPopulListApi = async () => {
+    axios.get('http://openapi.seoul.go.kr:8088/554552564a6b736835366741736851/xml/IotVdata018/1/5/', {
+      "Content-Type" : "application/json; charset=utf-8"
+    })
+    .then(response => console.log(response.data))
+    .then( response => {
+      try {
+        this.setState({responseFPList: response });
+      } catch (error) {
+        alert(error)
+      }
+    })
+    .catch( error => {alert(error);return false;});
+  }
+
   render () {
     return (
       <>
