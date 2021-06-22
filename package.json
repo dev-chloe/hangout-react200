@@ -21,6 +21,7 @@
     "shallow-equal": "^1.2.1",
     "sweetalert2": "^11.0.11",
     "web-vitals": "^1.1.2",
+    "xml2js": "^0.4.23",
     "yarn": "^1.22.10"
   },
   "scripts": {

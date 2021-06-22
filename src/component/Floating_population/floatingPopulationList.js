@@ -1,5 +1,6 @@
 import axios from "axios";
 import { Component } from "react";
+const parseString = require("xml2js").parseString;
 
 class floatingPopulationList extends Component {
   constructor(props) {
@@ -19,10 +20,18 @@ class floatingPopulationList extends Component {
     axios.get('http://openapi.seoul.go.kr:8088/554552564a6b736835366741736851/xml/IotVdata018/1/5/', {
       "Content-Type" : "application/json; charset=utf-8"
     })
-    .then(response => console.log(response.data))
-    .then( response => {
+    // .then(response => console.log(response.data))
+    .then(response => {
+      const xmlStr = response.data
+      let floatingData = {}
+      parseString( xmlStr, (error, result) => {
+        // console.log(result); 
+        // console.log(result.IotVdata018.row);
+        floatingData = result.IotVdata018.row
+      })
+      console.log(floatingData)
       try {
-        this.setState({responseFPList: response });
+        this.setState({responseFPList: floatingData });
       } catch (error) {
         alert(error)
       }
