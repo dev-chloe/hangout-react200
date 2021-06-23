@@ -80,3 +80,8 @@ footer .inner p {
   font-size: 20px;
 }
 
+table {
+  width: 100%;
+  text-align: center;
+}
+

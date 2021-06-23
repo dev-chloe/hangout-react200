@@ -17,7 +17,7 @@ class floatingPopulationList extends Component {
   }
 
   callFloatPopulListApi = async () => {
-    axios.get('http://openapi.seoul.go.kr:8088/554552564a6b736835366741736851/xml/IotVdata018/1/5/', {
+    axios.get('http://openapi.seoul.go.kr:8088/554552564a6b736835366741736851/xml/IotVdata018/1/30/', {
       "Content-Type" : "application/json; charset=utf-8"
     })
     // .then(response => console.log(response.data))
@@ -29,14 +29,41 @@ class floatingPopulationList extends Component {
         // console.log(result.IotVdata018.row);
         floatingData = result.IotVdata018.row
       })
-      console.log(floatingData)
+      // console.log(floatingData)
       try {
         this.setState({responseFPList: floatingData });
+        this.setState({
+          append_FPList: this.FloatPopulListAppend()
+        })
       } catch (error) {
         alert(error)
       }
     })
     .catch( error => {alert(error);return false;});
+  }
+
+  FloatPopulListAppend = () => {
+    let result = []
+    var FPList = this.state.responseFPList
+    // var jsonString = JSON.stringify(FPList)
+    // jsonString = jsonString.replace(/\(1시간 단위\)/g, '')
+    // jsonString = jsonString.replace(/\(10세 단위\)/g, '')
+    // var json = JSON.parse(jsonString)
+
+    for (let i = 0; i < FPList.length; i++) {
+      var data = FPList[i]
+      var idx = i + 1
+      result.push (
+        <tr className="hidden_type">
+          <td>{idx}</td>
+          <td>{data.REGIST_DT}</td>
+          <td>{data.ORGAN_NM}</td>
+          <td>{data.COLUMN1}</td>
+          <td>{data.COLUMN6}</td>
+        </tr>
+      )
+    }
+    return result
   }
 
   render () {
@@ -47,37 +74,13 @@ class floatingPopulationList extends Component {
             <tr>
               <th>No</th>
               <th>일자</th>
-              <th>시간</th>
-              <th>연령대</th>
-              <th>성별</th>
-              <th>시</th>
-              <th>군구</th>
-              <th>유동 인구 수</th>
+              <th>지역</th>
+              <th>시리얼</th>
+              <th>방문자수</th>
             </tr>
           </thead>
-        </table>
-        <table className="table_ty2 tlist">
           <tbody>
-            <tr className="hidden_type">
-              <td>1</td>
-              <td>20210620</td>
-              <td>00</td>
-              <td>40</td>
-              <td>여성</td>
-              <td>서울</td>
-              <td>영등포구</td>
-              <td>23670</td>
-            </tr>
-            <tr className="hidden_type">
-              <td>2</td>
-              <td>20210620</td>
-              <td>00</td>
-              <td>30</td>
-              <td>남성</td>
-              <td>서울</td>
-              <td>관악구</td>
-              <td>27888</td>
-            </tr>
+            {this.state.append_FPList}
           </tbody>
         </table>
       </>
@@ -86,3 +89,10 @@ class floatingPopulationList extends Component {
 }
 
 export default floatingPopulationList;
+
+/* 
+  sk 텔레콤 빅 데이터 허브 사이트가 사라진 관계로
+  서울 열린 데이터 광장(http://data.seoul.go.kr/dataList/datasetList.do)에서
+  서울시 유동인구 측정 정보 api를 이용했다.
+  xml을 xml2js을 이용하여 json으로 변경하여 사용하였다.
+ */
