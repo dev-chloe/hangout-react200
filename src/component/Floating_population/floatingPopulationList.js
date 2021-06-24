@@ -1,5 +1,6 @@
 import axios from "axios";
 import { Component } from "react";
+import { CartesianGrid, LineChart, XAxis, YAxis, Tooltip, Legend, Line } from "recharts";
 const parseString = require("xml2js").parseString;
 
 class floatingPopulationList extends Component {
@@ -17,7 +18,7 @@ class floatingPopulationList extends Component {
   }
 
   callFloatPopulListApi = async () => {
-    axios.get('http://openapi.seoul.go.kr:8088/554552564a6b736835366741736851/xml/IotVdata018/1/30/', {
+    axios.get('http://openapi.seoul.go.kr:8088/554552564a6b736835366741736851/xml/IotVdata018/1/10/', {
       "Content-Type" : "application/json; charset=utf-8"
     })
     // .then(response => console.log(response.data))
@@ -29,9 +30,10 @@ class floatingPopulationList extends Component {
         // console.log(result.IotVdata018.row);
         floatingData = result.IotVdata018.row
       })
-      // console.log(floatingData)
+      console.log(floatingData)
       try {
         this.setState({responseFPList: floatingData });
+
         this.setState({
           append_FPList: this.FloatPopulListAppend()
         })
@@ -43,33 +45,45 @@ class floatingPopulationList extends Component {
   }
 
   FloatPopulListAppend = () => {
-    let result = []
+    // let result = []
     var FPList = this.state.responseFPList
     // var jsonString = JSON.stringify(FPList)
     // jsonString = jsonString.replace(/\(1시간 단위\)/g, '')
     // jsonString = jsonString.replace(/\(10세 단위\)/g, '')
     // var json = JSON.parse(jsonString)
 
-    for (let i = 0; i < FPList.length; i++) {
-      var data = FPList[i]
-      var idx = i + 1
-      result.push (
-        <tr className="hidden_type">
-          <td>{idx}</td>
-          <td>{data.REGIST_DT}</td>
-          <td>{data.ORGAN_NM}</td>
-          <td>{data.COLUMN1}</td>
-          <td>{data.COLUMN6}</td>
-        </tr>
-      )
-    }
-    return result
+    // for (let i = 0; i < FPList.length; i++) {
+    //   var data = FPList[i]
+    //   var idx = i + 1
+    //   result.push (
+    //     <tr className="hidden_type">
+    //       <td>{idx}</td>
+    //       <td>{data.REGIST_DT}</td>
+    //       <td>{data.ORGAN_NM}</td>
+    //       <td>{data.COLUMN1}</td>
+    //       <td>{data.COLUMN6}</td>
+    //     </tr>
+    //   )
+    // }
+    return FPList
   }
 
   render () {
     return (
       <>
-        <table className="table_ty1 tlist">
+        <LineChart
+          width = { 1000 }
+          height = { 300 }
+          data = { this.FloatPopulListAppend() }
+          margin = { { top: 4, right: 30, left: 20, bottom: 5} }
+        >
+          <CartesianGrid strokeDasharray="3 10" />
+          <XAxis dataKey="ORGAN_NM" /><YAxis />
+          <Tooltip />
+          <Legend />
+          <Line type="monotone" dataKey="COLUMN6" stroke="#8884d8" activeDot={{ r: 8 }} />
+        </LineChart>
+        {/* <table className="table_ty1 tlist">
           <thead>
             <tr>
               <th>No</th>
@@ -82,7 +96,7 @@ class floatingPopulationList extends Component {
           <tbody>
             {this.state.append_FPList}
           </tbody>
-        </table>
+        </table> */}
       </>
     )
   }

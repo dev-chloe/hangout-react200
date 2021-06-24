@@ -3,8 +3,8 @@ import { Route } from 'react-router-dom';
 import '../App.css';
 import HeaderAdmin from './Header/HeaderAdmin';
 import Footer from './Footer/Footer';
-// import floatingPopulationList from './Floating_population/floatingPopulationList';
-import rechartsSimpleLineChart from './Floating_population/rechartsSimpleLineChart';
+import floatingPopulationList from './Floating_population/floatingPopulationList';
+// import rechartsSimpleLineChart from './Floating_population/rechartsSimpleLineChart';
 
 // function App() {
 //   return (
@@ -21,7 +21,7 @@ class App extends Component {
     return (
       <div className="App">
         <HeaderAdmin />
-        <Route exact path='/' component={rechartsSimpleLineChart} />
+        <Route exact path='/' component={floatingPopulationList} />
         <Footer />
       </div>
     )
