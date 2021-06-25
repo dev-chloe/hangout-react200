@@ -3,7 +3,7 @@ import { Route } from 'react-router-dom';
 import '../App.css';
 import HeaderAdmin from './Header/HeaderAdmin';
 import Footer from './Footer/Footer';
-import floatingPopulationList from './Floating_population/floatingPopulationList';
+import floatingPopulationAreaChart from './Floating_population/floatingPopulationAreaChart';
 // import rechartsSimpleLineChart from './Floating_population/rechartsSimpleLineChart';
 
 // function App() {
@@ -21,7 +21,7 @@ class App extends Component {
     return (
       <div className="App">
         <HeaderAdmin />
-        <Route exact path='/' component={floatingPopulationList} />
+        <Route exact path='/' component={floatingPopulationAreaChart} />
         <Footer />
       </div>
     )
