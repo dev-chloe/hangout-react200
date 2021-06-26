@@ -1,5 +1,6 @@
 import { PureComponent } from "react";
-import { CartesianGrid, LineChart, XAxis, YAxis, Tooltip, Legend, Line } from "recharts";
+// import { CartesianGrid, LineChart, XAxis, YAxis, Tooltip, Legend, Line } from "recharts";
+import { Bar, BarChart, CartesianGrid, Legend, Tooltip, XAxis, YAxis } from "recharts";
 
 const data = [
   { 군구: '광진구', 유동인구수: 32760, 비유동인구수: 34000 },
@@ -14,19 +15,34 @@ export default class rechartsSimpleLineChart extends PureComponent {
 
   render () {
     return (
-      <LineChart
-        width = { 1000 }
-        height = { 300 }
-        data = { data }
-        margin = { { top: 4, right: 30, left: 20, bottom: 5} }
-      >
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="군구" /><YAxis />
-        <Tooltip />
-        <Legend />
-        <Line type="monotone" dataKey="유동인구수" stroke="#8884d8" activeDot={{ r: 8 }} />
-        <Line type="monotone" dataKey="비유동인구수" stroke="#82ca9d" />
-      </LineChart>
+      // <LineChart
+      //   width = { 1000 }
+      //   height = { 300 }
+      //   data = { data }
+      //   margin = { { top: 4, right: 30, left: 20, bottom: 5} }
+      // >
+      //   <CartesianGrid strokeDasharray="3 3" />
+      //   <XAxis dataKey="군구" /><YAxis />
+      //   <Tooltip />
+      //   <Legend />
+      //   <Line type="monotone" dataKey="유동인구수" stroke="#8884d8" activeDot={{ r: 8 }} />
+      //   <Line type="monotone" dataKey="비유동인구수" stroke="#82ca9d" />
+      // </LineChart>
+        <BarChart 
+          width={1000}
+          height={300}
+          data={ data }
+          margin= {{
+            top: 5, right: 50, left: 20, bottom: 5
+          }}
+        >
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="군구" />
+          <YAxis />
+          <Tooltip />
+          <Legend />
+          <Bar dataKey="유동인구수" fill="#8884d8" />
+        </BarChart>
     )
   }
 }
