@@ -3,8 +3,7 @@ import { Route } from 'react-router-dom';
 import '../App.css';
 import HeaderAdmin from './Header/HeaderAdmin';
 import Footer from './Footer/Footer';
-import floatingPopulationBarChart from './Floating_population/floatingPopulationBarChart';
-// import rechartsSimpleLineChart from './Floating_population/rechartsSimpleLineChart';
+import reactProxy from './R109_reactProxy';
 
 // function App() {
 //   return (
@@ -20,8 +19,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <HeaderAdmin />
-        <Route exact path='/' component={floatingPopulationBarChart} />
+        <HeaderAdmin /> 
+        <Route exact path='/reactProxy' component={reactProxy} />
         <Footer />
       </div>
     )
@@ -29,8 +28,6 @@ class App extends Component {
 }
 
 export default App;
-
-
 
 /*
   <Route> 태그에 path 속성은 호출되는 url 경로, component 속성은 연결할 컴포넌트를 할당한다.
@@ -45,3 +42,4 @@ export default App;
   상단에 header가 하단에 footer 영역이 고정으로 위치하고 중간 영역에 라우팅되는 컴포넌트가 표시된다
   루트 경로에서 /reactRouter2 경로로 url을 이동해도 중간에 표시되는 컴포넌트 영역만 바뀐다.
 */
+
