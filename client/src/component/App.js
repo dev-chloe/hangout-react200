@@ -3,7 +3,7 @@ import { Route } from 'react-router-dom';
 import '../App.css';
 import HeaderAdmin from './Header/HeaderAdmin';
 import Footer from './Footer/Footer';
-import ApiGetJson from './R110_ApiGetJson';
+import ApiPostJson from './R111_ApiPostJson';
 
 // function App() {
 //   return (
@@ -20,7 +20,7 @@ class App extends Component {
     return (
       <div className="App">
         <HeaderAdmin /> 
-        <Route exact path='/' component={ApiGetJson} />
+        <Route exact path='/' component={ApiPostJson} />
         <Footer />
       </div>
     )
