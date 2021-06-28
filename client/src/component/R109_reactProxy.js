@@ -17,3 +17,7 @@ class R109_reactProxy extends Component {
 }
 
 export default R109_reactProxy;
+
+/*
+  .text 함수로 문자열로 변환해 로그를 출력한다.
+*/

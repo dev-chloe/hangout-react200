@@ -3,7 +3,7 @@ import { Route } from 'react-router-dom';
 import '../App.css';
 import HeaderAdmin from './Header/HeaderAdmin';
 import Footer from './Footer/Footer';
-import reactProxy from './R109_reactProxy';
+import ApiGetJson from './R110_ApiGetJson';
 
 // function App() {
 //   return (
@@ -20,7 +20,7 @@ class App extends Component {
     return (
       <div className="App">
         <HeaderAdmin /> 
-        <Route exact path='/reactProxy' component={reactProxy} />
+        <Route exact path='/' component={ApiGetJson} />
         <Footer />
       </div>
     )
