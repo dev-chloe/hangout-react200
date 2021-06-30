@@ -32,6 +32,8 @@
   ![](./img/react-vs-redux.png)
 
 
+### [MYSQL 서버 구축하기 - AWS 가입하기](https://aws.amazon.com/ko/)
+- react와 node 서버거 구동될 EC2라는 ubuntu 서버와 DB(mysql) 서버로 사용될 RDS 서버다.
 
   
 ---
