@@ -51,7 +51,13 @@
 - 인바운드 포트를 추가하기 위해 인바운드 규칙 편집을 클릭한다.
 - 규칙 추가를 눌러 MYSQL/Aurora인 3306 포트의 규칙을 입력하고 규칙 저장을 한다.
 
-  
+### [MYSQL 설치](https://dev.mysql.com/downloads/mysql/) (안깔아도 됬었음)
+- DMG Archive 설치한다
+- NO thanks, just start my download 버튼으로 설치 가능하다. 
+
+### [MYSQL Workbench 설치](https://dev.mysql.com/downloads/workbench/)
+
+
 ---
 
 ## etc.
