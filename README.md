@@ -57,7 +57,9 @@
 
 ### [MYSQL Workbench 설치](https://dev.mysql.com/downloads/workbench/)
 
-
+```bash
+brew install --cask mysqlWorkbench
+```
 ---
 
 ## etc.
