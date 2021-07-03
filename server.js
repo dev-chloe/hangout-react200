@@ -2,6 +2,7 @@ var express = require('express');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var dbcon = require('./routes/utils/dbcon');
 
 var app = express();
 
@@ -10,7 +11,7 @@ app.use('/users', usersRouter);
 
 const port = process.env.PORT || 5000;
 app.listen(port, () => console.log(`Listening on port ${port}`));
-
+dbcon.getDBConnectionInfo();
 // module.exports = app;
 
 // 라우팅이란, 네트워트 주소에 따라 목적지 경로를 체게적으로 결정하는 경로 선택 과정이다.
