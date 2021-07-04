@@ -60,6 +60,17 @@
 ```bash
 brew install --cask mysqlWorkbench
 ```
+
+### workebench로 rds 서버 접속하기
+- aws > 서비스 > 데이터베이서> RDS > DB DLSTMXJSTM(1/40) > DB 식별자 > 엔드포인트 확인
+- mysql connections 문구옆에 + 버튼 누르면 Setup New Connection 창 표시
+- connection name을 정해 입력
+- hostname에 rds 서버 엔드포인트 입력
+- username은 rds 기본 설정인 admin으로 입력
+- storein vault.. 버튼을 누르면 패스워드 입력할 수 있다. RDS 인스턴스 생성 시 작성한 마스터 버호 입력한다.
+
+
+
 ---
 
 ## etc.
