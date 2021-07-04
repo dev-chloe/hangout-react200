@@ -62,13 +62,20 @@ brew install --cask mysqlWorkbench
 ```
 
 ### workebench로 rds 서버 접속하기
-- aws > 서비스 > 데이터베이서> RDS > DB DLSTMXJSTM(1/40) > DB 식별자 > 엔드포인트 확인
-- mysql connections 문구옆에 + 버튼 누르면 Setup New Connection 창 표시
-- connection name을 정해 입력
-- hostname에 rds 서버 엔드포인트 입력
-- username은 rds 기본 설정인 admin으로 입력
+- aws > 서비스 > 데이터베이서> RDS > DB DLSTMXJSTM(1/40) > DB 식별자 > 엔드포인트 확인한다
+- mysql connections 문구옆에 + 버튼 누르면 Setup New Connection 창 표시가 뜬다
+- connection name을 정해 입력한다
+- hostname에 rds 서버 엔드포인트 입력한다
+- username은 rds 기본 설정인 admin으로 입력한다
 - storein vault.. 버튼을 누르면 패스워드 입력할 수 있다. RDS 인스턴스 생성 시 작성한 마스터 버호 입력한다.
 
+
+### MYSQL 스키마 생성 및 table 생성하기
+- 스키마는 여러 개의 데이터베이스 생성해 독립적으로 사용할 수 있는다.
+- workbench에 접속해서 왼쪽 nvaigator 영역 하단의 schemas 탭을 선택후 빈공간에 오른쪽 마우스 버튼을 눌러 create scheam를 클릭한다,
+- schema 창에 name을 입력하고 apply를 누르면 스키마가 생성된다.
+- use react; 
+- CREATE TABEL 을 작성해 테이블을 생성한다.
 
 
 ---
