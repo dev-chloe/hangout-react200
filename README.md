@@ -84,6 +84,14 @@ brew install --cask mysqlWorkbench
 - rds 인스턴스에 추가한 파라미터 그룹을 등록하기 위해 수정 버튼 클릭 > DB 파라미터 그룹에 새로 추가한 파라미터 그룹 선택 > 계속 버튼 > 즉시 적용 > DB 인스턴스 수정
 - rds 인스턴스 재부팅 > workbench 에서 now() 함수를 실행하면 한국 시간으로 조회된다. 
 
+### MYSQL 한글 설정 및 Safe 모드 해제하기
+- rds 서버에 한글 설정이 돼 있지 않으면 데이터를 삽입할 때 한글이 깨진다.
+- 테이블 별로 charset을 utf8로 변경하면 한글 깨짐 현상을 해결할 수 있다.
+- safe 모드가 설정되어 있으면 update 와 delete 쿼리를 사용할 수 없으므로 해제하여야 한다.
+
+- workbench에서 SET SQL_SAFE_UPDATES = 0;로 설정하면 safe 모두가 해제되어 delete from react_swtool;가 실행 되는 것을 확인 할 수 있다.
+- ALTER TABLE react.react_swtool convert to charset utf8;를 이용해 한글이 깨지지 않도록 설정한다.
+
 ---
 
 ## etc.
