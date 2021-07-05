@@ -92,6 +92,13 @@ brew install --cask mysqlWorkbench
 - workbench에서 SET SQL_SAFE_UPDATES = 0;로 설정하면 safe 모두가 해제되어 delete from react_swtool;가 실행 되는 것을 확인 할 수 있다.
 - ALTER TABLE react.react_swtool convert to charset utf8;를 이용해 한글이 깨지지 않도록 설정한다.
 
+### MYSQL 더미 데이터 삽입하기
+- [INSERT INTO `react_swtool` VALUES ('USW20200101000000', '를 이름1', '상세 기능1', '20200101000000_라벨 이미지.png' ,'20200101000000_메인 이미지.png', '설명1', '데모 URL', '20200101000000_메뉴얼 파일.docx', 'Github URL1', '20200101000000', 'userA1', '20200102000000', 'userB1');] 
+- 위와 같은 insert 문을 사용해 더미 데이터를 삽입한다. 
+- 데이터와 column의 개수가 정확히 맞지 않으면 데이터가 들어가지 않는다.
+- [select * from react_swtool;] 
+- select 문으로 테이블을 조회할 수 있다.
+
 ---
 
 ## etc.
