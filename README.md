@@ -99,6 +99,10 @@ brew install --cask mysqlWorkbench
 - [select * from react_swtool;] 
 - select 문으로 테이블을 조회할 수 있다.
 
+### [fs(File System).readFileSync](https://c17an.github.io/node/Nodejs%EB%A1%9C-%ED%8C%8C%EC%9D%BC-%EB%8B%A4%EB%A3%A8%EA%B8%B0/)
+- fs.readFileSync()는 동기적으로 파일을 읽는 것이다.
+- 실행순서를 반드시 보장해야될 때 활용할 수 있다.
+
 ---
 
 ## etc.
