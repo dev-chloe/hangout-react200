@@ -103,6 +103,12 @@ brew install --cask mysqlWorkbench
 - fs.readFileSync()는 동기적으로 파일을 읽는 것이다.
 - 실행순서를 반드시 보장해야될 때 활용할 수 있다.
 
+
+### [터미널로 GET, POST 요청하기(`curl`)](https://developyo.tistory.com/11)
+
+```bash
+curl -X POST http://localhost:5000/api/Swtool
+```
 ---
 
 ## etc.

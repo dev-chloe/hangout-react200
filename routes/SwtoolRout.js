@@ -4,7 +4,7 @@ var router = express.Router();
 const bodyParser = require('body-parser');
 
 router.use(bodyParser.urlencoded({extended: true}));
-// body-parser 패키지의 urlencoded 함수를 실행하면, &key1=value&key2=value2와 같은 형태로 전달되는 데이터를 추출할 수 있따.
+// body-parser 패키지의 urlencoded 함수를 실행하면, &key1=value&key2=value2와 같은 형태로 전달되는 데이터를 추출할 수 있다.
 
 router.post('/', (req, res, next) => {
   var type = req.query.type;
@@ -16,12 +16,12 @@ router.post('/', (req, res, next) => {
     try {
       // Mysql Api 모듈(CRUD)
       var dbconnect_Module = require('./dbconnect_Module');
+      
       // Mysql 쿼리 호출 정보 입력
       req.body.mapper = 'SwToolsMapper'; //mybatis xml 파일명
       req.body.crud = 'select'; // select, insert, update, delete 중에 입력
       req.body.mapper_id = 'selectSwToolsList';
       // 쿼리가 작성될 xml 파일명(mapper), 작업 종류(crud), 실행 쿼리의 id(mapper_id) 정보를 request body에 넣는다. json 형태의 데이터로 할당한다.
-
 
       router.use('/', dbconnect_Module);
       /* 
