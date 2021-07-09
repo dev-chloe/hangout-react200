@@ -107,6 +107,7 @@ brew install --cask mysqlWorkbench
 ### [터미널로 GET, POST 요청하기(`curl`)](https://developyo.tistory.com/11)
 
 ```bash
+# POST 요청 예제
 curl -X POST http://localhost:5000/api/Swtool
 ```
 ---
