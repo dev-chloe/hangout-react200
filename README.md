@@ -110,6 +110,8 @@ brew install --cask mysqlWorkbench
 # POST 요청 예제
 curl -X POST http://localhost:5000/api/Swtool
 ```
+
+### [통신 기초](https://app.diagrams.net/#G1FJv5UvZXdqXAngooxW76wZUeuVpo6Q7y)
 ---
 
 ## etc.
