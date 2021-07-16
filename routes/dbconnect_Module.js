@@ -15,8 +15,8 @@ router.post("/", (req, res) => {
 
   mybatisMapper.createMapper(['./models/'+param.mapper+'.xml']);
   // createMapper 함수를 사용해 쿼리를 작성할 xml 파일 경로를 파라미터로 전달한다.
-  var time = new Date();
-  console.log('## '+time+' ##');
+  var timeBeforeQuery = new Date();
+  console.log(`check time before qurey: ${timeBeforeQuery}`);
   console.log("\n Call Mapper Name = "+param.mapper);
 
   var format = { language: 'sql', indet: ' '};
@@ -34,21 +34,34 @@ router.post("/", (req, res) => {
   console.log("* mapper namespace : "+param.mapper+"."+param.mapper_id+" *\n");
   console.log(sqlStmt+ "\n");
 
-  connection.query(sqlStmt, function ( error, results ) {
+  connection.query(sqlStmt, function ( error, queryResult ) {
     // 생성된 연결에 query 함수를 사용해 sqlStmt 변수에 저장된 쿼리를 불러와 실행한다.
-    // mysql 서버에서 실행 결과를 반환하면, 콜백 함수의 파라미터인 results 변수에 할당된다.
+    // mysql 서버에서 실행 결과를 반환하면, 콜백 함수의 파라미터인 queryResult 변수에 할당된다.
+    var timeAfterQuery = new Date();
+    console.log(`check time after qurey: ${timeAfterQuery}`);
+
+    // db mysql 서버에서 에러 응답이 온 경우 에러를 응답한다.
     if (error) {
-      console.log("db error ************* : "+error);
+      console.error("db error ************* : "+error);
+      res.statusCode = 500; // 내부적인 문제(db의 에러응답)로 요청을 처리할 수 없다.
+      res.statusMessage = "Internal error";
+      res.send();
+      return;
     }
-    var time2 = new Date();
-    console.log('## '+time2+' ##');
-    console.log('## RESULT DATA LIST ##: \n', results);
-    string = JSON.stringify(results);
-    var json = JSON.parse(string);
-    res.send({ json });
+
+    // 정상 응답을 json 데이터로 변환하여 응답한다.
+    console.log('Query Result DATA LIST: \n', queryResult);
+    // var queryResultString = JSON.stringify(queryResult);
+    // var json = JSON.parse(queryResultString);
+
+    var resData = {
+      statusCode: "200",
+      data: queryResult
+    }
+    res.send(resData);
     console.log("\n========= Node Mybatis Query Log End =========");
   })
-
+  
 })
 
 module.exports = router;
