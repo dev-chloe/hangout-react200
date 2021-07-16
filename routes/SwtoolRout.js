@@ -7,6 +7,8 @@ router.use(bodyParser.urlencoded({extended: true}));
 // body-parser 패키지의 urlencoded 함수를 실행하면, &key1=value&key2=value2와 같은 형태로 전달되는 데이터를 추출할 수 있다.
 
 router.post('/', (req, res, next) => {
+  console.log(`req.query: ${JSON.stringify(req.query)}`);
+  console.log(`req.body: ${JSON.stringify(req.body)}`);
   var type = req.query.type;
   if(type == 'list') {
     // 호출 url에서 type이라는 key의 value를 추출하기 위해서는 req.query 문법으로 key 값에 접근해야 한다.

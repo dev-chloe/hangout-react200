@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 const mysql = require("mysql");
 const bodyParser = require("body-parser");
-var dbcon = require('./routes/utils/dbcon');
+var dbcon = require('./utils/dbcon');
 
 router.use(bodyParser.json());
 
@@ -22,7 +22,7 @@ router.post("/", (req, res) => {
   var format = { language: 'sql', indet: ' '};
   // mybatis에서 mysql을 사용하기 때문에 format의 언어를 sql로 할당한다.
 
-  var query = mybatisMapper.getStatement(param.mapper, param.mapper_id, param, format);
+  var sqlStmt = mybatisMapper.getStatement(param.mapper, param.mapper_id, param, format);
   /*
     mysql에서 실행할 쿼리를 getStatement가 생성해 query라는 변수에 할당한다.
     getStatement 함수의 파라미터로 쿼리가 작성될 xml 파일(mapper)명, xml 파일 안에서 실행될 특정 쿼리의 id (mapper_id), 
@@ -32,10 +32,10 @@ router.post("/", (req, res) => {
   */
   console.log("\n========= Node Mybatis Query Log Start =========");
   console.log("* mapper namespace : "+param.mapper+"."+param.mapper_id+" *\n");
-  console.log(query+ "\n");
+  console.log(sqlStmt+ "\n");
 
-  connection.query(query, function ( error, results ) {
-    // 생성된 연결에 query 함수를 사용해 query 변수에 저장된 쿼리를 불러와 실행한다.
+  connection.query(sqlStmt, function ( error, results ) {
+    // 생성된 연결에 query 함수를 사용해 sqlStmt 변수에 저장된 쿼리를 불러와 실행한다.
     // mysql 서버에서 실행 결과를 반환하면, 콜백 함수의 파라미터인 results 변수에 할당된다.
     if (error) {
       console.log("db error ************* : "+error);
@@ -45,6 +45,7 @@ router.post("/", (req, res) => {
     console.log('## RESULT DATA LIST ##: \n', results);
     string = JSON.stringify(results);
     var json = JSON.parse(string);
+    res.send({ json });
     console.log("\n========= Node Mybatis Query Log End =========");
   })
 
