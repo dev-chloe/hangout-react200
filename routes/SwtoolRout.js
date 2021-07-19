@@ -24,7 +24,7 @@ router.post('/', (req, res, next) => {
       req.body.crud = 'select'; // select, insert, update, delete 중에 입력
       req.body.mapper_id = 'selectSwToolsList';
       // 쿼리가 작성될 xml 파일명(mapper), 작업 종류(crud), 실행 쿼리의 id(mapper_id) 정보를 request body에 넣는다. json 형태의 데이터로 할당한다.
-
+      console.log(req.body)
       router.use('/', dbconnect_Module);
       /* 
         require한 dbconnect_Module 파일로 라우팅한다. 

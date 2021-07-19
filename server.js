@@ -1,11 +1,35 @@
 var express = require('express');
+var cors = require('cors');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 // var dbcon = require('./routes/utils/dbcon');
 var swtoolRouter = require('./routes/SwtoolRout');
+const { notify } = require('./routes/SwtoolRout');
 
 var app = express();
+
+// cors 적용
+var allowlist = ['http://localhost:3000/', 'http://127.0.0.1:3000']
+var corsOptionsDelegate = function (req, callback) {
+  var corsOptions;
+  // if (allowlist.indexOf(req.header('Origin')) !== -1) {
+  //   corsOptions = { origin: true } // reflect (enable) the requested origin in the CORS response
+  // } else {
+  //   corsOptions = { origin: false } // disable CORS for this request
+  // }
+  corsOptions = {
+    "origin": "*",
+    "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
+    "preflightContinue": false,
+    "optionsSuccessStatus": 204
+  }
+  callback(null, corsOptions) // callback expects two parameters: error and options
+  console.log(1)
+}
+var corsOptions = { origin: true }
+// app.use(cors(corsOptionsDelegate));
+// app.use(cors());
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

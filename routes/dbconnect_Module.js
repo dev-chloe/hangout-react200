@@ -12,7 +12,11 @@ const connection = mysql.createConnection(dbConnectionInfo);
 router.post("/", (req, res) => {
   const mybatisMapper = require("mybatis-mapper");
   var param = req.body;
-
+  // req.body.mapper = 'SwToolsMapper'; //mybatis xml 파일명
+  // req.body.crud = 'select'; // select, insert, update, delete 중에 입력
+  // req.body.mapper_id = 'selectSwToolsList';
+  console.log(param);
+  console.log(req.body); 
   mybatisMapper.createMapper(['./models/'+param.mapper+'.xml']);
   // createMapper 함수를 사용해 쿼리를 작성할 xml 파일 경로를 파라미터로 전달한다.
   var timeBeforeQuery = new Date();
@@ -64,4 +68,4 @@ router.post("/", (req, res) => {
   
 })
 
-module.exports = router;
+module.exports = router; 

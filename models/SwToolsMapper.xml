@@ -12,8 +12,8 @@
       , swt_demo_site
       , swt_manual_path
       , swt_github_url
-      <!-- , reg_date
-      , reg_user
+      , reg_date
+      <!-- , reg_user
       , update_date
       , update_user -->
     FROM react.react_swtool
