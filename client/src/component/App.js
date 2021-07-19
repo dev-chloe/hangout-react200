@@ -4,6 +4,7 @@ import '../App.css';
 import HeaderAdmin from './Header/HeaderAdmin';
 import Footer from './Footer/Footer';
 import ApiPostJson from './R111_ApiPostJson';
+import SoftwareList from './SoftwareToolsManage/SoftwareList';
 
 // function App() {
 //   return (
@@ -21,7 +22,7 @@ class App extends Component {
     return (
       <div className="App">
         <HeaderAdmin /> 
-        <Route exact path='/' component={ApiPostJson} />
+        <Route exact path='/' component={SoftwareList} />
         <Footer />
       </div>
     )
