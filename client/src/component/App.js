@@ -21,7 +21,11 @@ class App extends Component {
     return (
       <div className="App">
         <HeaderAdmin /> 
+<<<<<<< HEAD
         <Route path='/' component={SoftwareList} />
+=======
+        <Route exact path='/' component={SoftwareList} />
+>>>>>>> 21896b46dfc5ca87e8a5418f44ca8c73b5078308
         <Footer />
       </div>
     )
