@@ -12,9 +12,9 @@ const connection = mysql.createConnection(dbConnectionInfo);
 router.post("/", (req, res) => {
   const mybatisMapper = require("mybatis-mapper");
   var param = req.body;
-  // req.body.mapper = 'SwToolsMapper'; //mybatis xml 파일명
-  // req.body.crud = 'select'; // select, insert, update, delete 중에 입력
-  // req.body.mapper_id = 'selectSwToolsList';
+  req.body.mapper = 'SwToolsMapper'; //mybatis xml 파일명
+  req.body.crud = 'select'; // select, insert, update, delete 중에 입력
+  req.body.mapper_id = 'selectSwToolsList';
   console.log(param);
   console.log(req.body);
   mybatisMapper.createMapper(['./models/'+param.mapper+'.xml']);

@@ -29,7 +29,7 @@ var corsOptionsDelegate = function (req, callback) {
 }
 var corsOptions = { origin: true }
 // app.use(cors(corsOptionsDelegate));
-// app.use(cors());
+app.use(cors());
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

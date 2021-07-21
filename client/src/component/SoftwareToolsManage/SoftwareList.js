@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-import { Link } from "react-router-dom";
+import {Link} from 'react-router-dom';
+import axios from "axios";
 
 class SoftwareList extends Component {
   constructor(props) {
-    super(props);
+      super(props);
 
-    this.state = {
-      responseSwtoolList: '',
-      append_SwtoolList: '',
-    }
+      this.state = {
+          responseSwtoolList: '',
+          append_SwtoolList: '',
+      }
   }
+
   componentDidMount() {
     this.callSwToolListApi();
   }
@@ -19,8 +20,11 @@ class SoftwareList extends Component {
     axios.post('http://localhost:5000/api/Swtool?type=list', {
     })
     .then( response => {
+      // console.log(response)
       try {
-        this.setState({ responseSwtoolList: response });
+        this.setState({ 
+          responseSwtoolList: response 
+        },);
         this.setState({
           append_SwtoolList: this.SoftwareListAppend() 
         })
@@ -36,10 +40,10 @@ class SoftwareList extends Component {
 
   SwToolListAppend = () => {
     let result = [];
-    var SwToolList = this.state.responseSwtoolList.data;
-
+    var SwToolList = this.state.responseSwtoolList;
+    console.log(SwToolList)
     for(let i=0; i<SwToolList.json.length; i++) {
-      var date = SwToolList.json[i];
+      var data = SwToolList.json[i];
 
       var date = date.reg_date;
       var year = date.substr(0,4);
@@ -48,26 +52,25 @@ class SoftwareList extends Component {
       var reg_date = `${year}.${month}.${day}`;
 
       result.push(
-        <tr class="hidden_type">
-          <td>{date.swt_toolname}</td>
-          <td>{date.swt_function}</td>
+        <tr className="hidden_type">
+          <td>{data.swt_toolname}</td>
+          <td>{data.swt_function}</td>
           <td>{reg_date}</td>
           <td>
-            <Link to={'/AdminSoftwareView'+date.swt_code} className="bt_cl bt_c2 w50_b">수정</Link>
+            <Link to={'/AdminSoftwareView'+data.swt_code} className="bt_cl bt_c2 w50_b">수정</Link>
             <a href="#n" class="bt_c1 w50_b">삭제</a>
           </td>
         </tr>
       )
-
     }
     return result
   }
 
   render() {
     return (
-      <section class="sub_wrap">
-        <article class="s_cnt mp_pro_li cti mp_pro_li_admin">
-          <div class="list_cont list_cont_admin">
+      <section className="sub_wrap">
+        <article className="s_cnt mp_pro_li cti mp_pro_li_admin">
+          <div className="list_cont list_cont_admin">
             <table>
               <tr>
                 <th>
